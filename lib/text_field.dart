@@ -11,6 +11,7 @@ class CustomFormField extends StatefulWidget {
     this.colorHint,
     this.colorError,
     this.colorBorder,
+    this.colorInput,
     this.hint,
     this.label,
     this.validator,
@@ -26,6 +27,7 @@ class CustomFormField extends StatefulWidget {
   final Color? colorHint;
   final Color? colorError;  
   final Color? colorBorder;
+  final Color? colorInput;
   final String? countryCode;
   final String? hint;
   final String? label;
@@ -56,7 +58,7 @@ class _CustomFormFieldState extends State<CustomFormField> {
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: widget.validator,
                 onChanged: widget.onChanged,
-                style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500),
+                style: TextStyle(color: widget.colorInput ?? Colors.black, fontSize: 12, fontWeight: FontWeight.w500),
                 obscureText: widget.isPassword ? isHide : false,
                 keyboardType: widget.isNumber ? TextInputType.phone : null,
                 decoration: InputDecoration(
