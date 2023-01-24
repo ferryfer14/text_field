@@ -100,7 +100,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           child: Icon(
                             isHide
                                 ? Icons.visibility_off
-                                : Icons.remove_red_eye,
+                                : Icons.remove_red_eye_outlined,
                             size: 20,
                             color: widget.colorIconPassword ?? Colors.grey.shade400,
                           ),
