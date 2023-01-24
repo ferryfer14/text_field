@@ -12,6 +12,7 @@ class TextField extends StatefulWidget {
     this.colorError,
     this.colorBorder,
     this.colorInput,
+    this.borderRadius,
     this.hint,
     this.label,
     this.validator,
@@ -31,6 +32,7 @@ class TextField extends StatefulWidget {
   final String? countryCode;
   final String? hint;
   final String? label;
+  final BorderRadius? borderRadius;
   final FormFieldValidator<String>? validator;
   final ValueChanged<String>? onChanged;
   final bool isPhone;
@@ -94,15 +96,15 @@ class _TextFieldState extends State<TextField> {
                   hintStyle: TextStyle(color: widget.colorHint ?? Colors.grey, fontSize: 12),
                   errorStyle: TextStyle(color: widget.colorError ?? Colors.red, fontSize: 12),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: widget.borderRadius ?? BorderRadius.circular(8),
                     borderSide: BorderSide(color: widget.colorBorder ?? Colors.black45),
                   ),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: widget.borderRadius ?? BorderRadius.circular(8),
                     borderSide: BorderSide(color: widget.colorBorder ?? Colors.black45),
                   ),
                   errorBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: widget.borderRadius ?? BorderRadius.circular(8),
                     borderSide: BorderSide(color: widget.colorError ?? Colors.red),
                   ),
                 ),
