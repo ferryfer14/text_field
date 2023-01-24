@@ -135,8 +135,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ),
         Text(widget.info ?? '',
             style: TextStyle(
-                color: widget.colorLabel ?? Colors.black,
-                fontSize: widget.fontSizeLabel ?? 10,
+                color: widget.colorInfo ?? Colors.black,
+                fontSize: widget.fontSizeInfo ?? 10,
                 fontWeight: FontWeight.w600)),
       ],
     );
