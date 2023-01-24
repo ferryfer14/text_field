@@ -11,8 +11,10 @@ class CustomTextField extends StatefulWidget {
     this.colorHint,
     this.colorError,
     this.colorBorder,
+    this.colorFocus,
     this.colorInput,
     this.colorInfo,
+    this.cursorColor,
     this.borderRadius,
     this.hint,
     this.label,
@@ -33,8 +35,10 @@ class CustomTextField extends StatefulWidget {
   final Color? colorHint;
   final Color? colorError;  
   final Color? colorBorder;
+  final Color? colorFocus;
   final Color? colorInput;
   final Color? colorInfo;
+  final Color? cursorColor;
   final String? countryCode;
   final String? hint;
   final String? label;
@@ -69,6 +73,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           children: [
             Expanded(
               child: TextFormField(
+                cursorColor: widget.cursorColor ?? Colors.lightBlue,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: widget.validator,
                 onChanged: widget.onChanged,
@@ -113,9 +118,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   hintText: widget.hint,
                   hintStyle: TextStyle(color: widget.colorHint ?? Colors.grey, fontSize: 12),
                   errorStyle: TextStyle(color: widget.colorError ?? Colors.red, fontSize: 12),
-                  enabledBorder: OutlineInputBorder(
+                  focusedBorder: OutlineInputBorder(
                     borderRadius: widget.borderRadius ?? BorderRadius.circular(8),
-                    borderSide: BorderSide(color: widget.colorBorder ?? Colors.black45),
+                    borderSide:
+                        BorderSide(color: widget.colorFocus ?? Colors.black45),
                   ),
                   border: OutlineInputBorder(
                     borderRadius: widget.borderRadius ?? BorderRadius.circular(8),
