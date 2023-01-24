@@ -12,9 +12,14 @@ class CustomTextField extends StatefulWidget {
     this.colorError,
     this.colorBorder,
     this.colorInput,
+    this.colorInfo,
     this.borderRadius,
     this.hint,
     this.label,
+    this.info,
+    this.fontSizeLabel,
+    this.fontSizeInput,
+    this.fontSizeInfo,
     this.validator,
     this.onChanged,
     this.isPhone = false,
@@ -29,9 +34,12 @@ class CustomTextField extends StatefulWidget {
   final Color? colorError;  
   final Color? colorBorder;
   final Color? colorInput;
+  final Color? colorInfo;
   final String? countryCode;
   final String? hint;
   final String? label;
+  final String? info;
+  final double? fontSizeLabel, fontSizeInput, fontSizeInfo;
   final BorderRadius? borderRadius;
   final FormFieldValidator<String>? validator;
   final ValueChanged<String>? onChanged;
@@ -51,7 +59,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(widget.label ?? '', style: TextStyle(color: widget.colorLabel ?? Colors.black, fontSize: 10,fontWeight: FontWeight.w600)),
+        Text(widget.label ?? '',
+            style: TextStyle(
+                color: widget.colorLabel ?? Colors.black,
+                fontSize: widget.fontSizeLabel ?? 10,
+                fontWeight: FontWeight.w600)),
         const SizedBox(height: 4,),
         Row(
           children: [
@@ -60,7 +72,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: widget.validator,
                 onChanged: widget.onChanged,
-                style: TextStyle(color: widget.colorInput ?? Colors.black, fontSize: 12, fontWeight: FontWeight.w500),
+                style: TextStyle(
+                    color: widget.colorInput ?? Colors.black,
+                    fontSize: widget.fontSizeInput ?? 12,
+                    fontWeight: FontWeight.w500),
                 obscureText: widget.isPassword ? isHide : false,
                 keyboardType: widget.isNumber ? TextInputType.phone : null,
                 decoration: InputDecoration(
@@ -70,7 +85,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           margin: const EdgeInsets.only(right: 4),
                           width: 40,
                           padding: const EdgeInsets.symmetric(horizontal: 6),
-                          child: Text( widget.countryCode ?? '+62', style: TextStyle(color: widget.colorCountry ?? Colors.grey, fontSize: 12)),
+                          child: Text(widget.countryCode ?? '+62',
+                              style: TextStyle(
+                                  color: widget.colorCountry ?? Colors.grey,
+                                  fontSize: widget.fontSizeInput ?? 12)),
                         )
                       : null,
                   suffixIcon: widget.isPassword
@@ -112,6 +130,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
           ],
         ),
+        const SizedBox(
+          height: 4,
+        ),
+        Text(widget.info ?? '',
+            style: TextStyle(
+                color: widget.colorLabel ?? Colors.black,
+                fontSize: widget.fontSizeLabel ?? 10,
+                fontWeight: FontWeight.w600)),
       ],
     );
   }
