@@ -1,8 +1,8 @@
 library text_field;
 import 'package:flutter/material.dart';
 
-class TextField extends StatefulWidget {
-  const TextField({
+class TextFormField extends StatefulWidget {
+  const TextFormField({
     Key? key,
     this.colorLabel,
     this.countryCode,
@@ -40,10 +40,10 @@ class TextField extends StatefulWidget {
   final bool isPassword;
 
   @override
-  State<TextField> createState() => _TextFieldState();
+  State<TextFormField> createState() => _TextFormFieldState();
 }
 
-class _TextFieldState extends State<TextField> {
+class _TextFormFieldState extends State<TextFormField> {
   bool isHide = true;
 
   @override
