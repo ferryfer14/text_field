@@ -1,4 +1,4 @@
-# textfield_tags
+# text_field
 
 This widget allows you to create a textfield that takes in Textfield values and display the values as tags. The tags can also be customized to your own preference. The widget also takes in a controller that can also be customized by extending it into your own custom controller and inheriting its functionalities.  
 
