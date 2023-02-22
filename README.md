@@ -47,7 +47,7 @@ This widget allows you to create a textfield that takes in Textfield values and 
 ```
 ### Visual Samples For Above Examples
 
-For Username
+For Username<br/>
 <img src="https://raw.githubusercontent.com/ferryfer14/text_field/main/assets/username.png" width=250>
 
 For Username on Focus
