@@ -60,7 +60,7 @@ For Password
 <img src="https://raw.githubusercontent.com/ferryfer14/text_field/main/assets/password.png" width=250>
 
 For Password on Show password
-<img src="https://raw.githubusercontent.com/ferryfer14/text_field/main/assets/username_onshow.png" width=250>
+<img src="https://raw.githubusercontent.com/ferryfer14/text_field/main/assets/password_onshow.png" width=250>
 
 For Phone Number
 <img src="https://raw.githubusercontent.com/ferryfer14/text_field/main/assets/phone.png" width=250>
