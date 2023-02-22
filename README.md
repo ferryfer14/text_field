@@ -48,19 +48,19 @@ This widget allows you to create a textfield that takes in Textfield values and 
 ### Visual Samples For Above Examples
 
 For Username
-<img src="https://raw.githubusercontent.com/eyoeldefare/textfield_tags/master/images/gif_1.gif" width=250>
+<img src="https://raw.githubusercontent.com/ferryfer14/text_field/main/assets/username.png" width=250>
 
 For Username on Focus
-<img src="https://raw.githubusercontent.com/eyoeldefare/textfield_tags/master/images/gif_1.gif" width=250>
+<img src="https://raw.githubusercontent.com/ferryfer14/text_field/main/assets/username_onfocus.png" width=250>
 
 For Username on error
-<img src="https://raw.githubusercontent.com/eyoeldefare/textfield_tags/master/images/gif_1.gif" width=250>
+<img src="https://raw.githubusercontent.com/ferryfer14/text_field/main/assets/username_onerror.png" width=250>
 
 For Password
-<img src="https://raw.githubusercontent.com/eyoeldefare/textfield_tags/master/images/gif_1.gif" width=250>
+<img src="https://raw.githubusercontent.com/ferryfer14/text_field/main/assets/password.png" width=250>
 
 For Password on Show password
-<img src="https://raw.githubusercontent.com/eyoeldefare/textfield_tags/master/images/gif_1.gif" width=250>
+<img src="https://raw.githubusercontent.com/ferryfer14/text_field/main/assets/username_onshow.png" width=250>
 
 For Phone Number
-<img src="https://raw.githubusercontent.com/eyoeldefare/textfield_tags/master/images/gif_1.gif" width=250>
+<img src="https://raw.githubusercontent.com/ferryfer14/text_field/main/assets/phone.png" width=250>
