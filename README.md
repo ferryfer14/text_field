@@ -1,39 +1,66 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# textfield_tags
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+This widget allows you to create a textfield that takes in Textfield values and display the values as tags. The tags can also be customized to your own preference. The widget also takes in a controller that can also be customized by extending it into your own custom controller and inheriting its functionalities.  
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+## Environment
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+`sdk: ">=2.12.0 <3.0.0"`
 
-## Features
+`flutter: ">=1.17.0"`
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## Installation
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+```yaml 
+  dependencies:
+    text_field:
+        git:
+            url: https://github.com/ferryfer14/text_field.git
+            ref: main # branch name
 ```
 
-## Additional information
+`$ flutter pub get`
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+## Getting Started
+
+``` dart
+    CustomTextField(
+        cursorColor: primaryColor,
+        label: AppLocalizations.of(context)!.username,
+        fontSizeLabel: 16,
+        hint: '',
+        fontSizeInput: 14,
+        info: AppLocalizations.of(context)!.info_username,
+        fontSizeInfo: 12,
+        colorInfo:  secondaryColor,
+        colorInput: inputColor,
+        colorBorder: secondaryColor,
+        colorFocus: primaryColor,
+        onChanged: (val) {
+        },
+        validator: (val) {
+            if (val!.isEmpty) {
+                return AppLocalizations.of(context)!
+                .username_cant_empty;
+            }
+        },
+    ),
+```
+### Visual Samples For Above Examples
+
+For Username
+<img src="https://raw.githubusercontent.com/eyoeldefare/textfield_tags/master/images/gif_1.gif" width=250>
+
+For Username on Focus
+<img src="https://raw.githubusercontent.com/eyoeldefare/textfield_tags/master/images/gif_1.gif" width=250>
+
+For Username on error
+<img src="https://raw.githubusercontent.com/eyoeldefare/textfield_tags/master/images/gif_1.gif" width=250>
+
+For Password
+<img src="https://raw.githubusercontent.com/eyoeldefare/textfield_tags/master/images/gif_1.gif" width=250>
+
+For Password on Show password
+<img src="https://raw.githubusercontent.com/eyoeldefare/textfield_tags/master/images/gif_1.gif" width=250>
+
+For Phone Number
+<img src="https://raw.githubusercontent.com/eyoeldefare/textfield_tags/master/images/gif_1.gif" width=250>
