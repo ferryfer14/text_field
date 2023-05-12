@@ -137,7 +137,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           ],
         ),
         const SizedBox(
-          height: 4,
+          height: widget.info == ''  ? 0 : 4,
         ),
         Text(widget.info ?? '',
             style: TextStyle(
