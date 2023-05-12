@@ -24,6 +24,7 @@ class CustomTextField extends StatefulWidget {
     this.fontSizeInfo,
     this.validator,
     this.onChanged,
+    this.heighInfo,
     this.isPhone = false,
     this.isNumber = false,
     this.isPassword = false,
@@ -50,6 +51,7 @@ class CustomTextField extends StatefulWidget {
   final bool isPhone;
   final bool isNumber;
   final bool isPassword;
+  final int? heighInfo;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -137,7 +139,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           ],
         ),
         const SizedBox(
-          height: widget.info == ''  ? 0 : 4,
+          height: widget.heighInfo ?? 4,
         ),
         Text(widget.info ?? '',
             style: TextStyle(
