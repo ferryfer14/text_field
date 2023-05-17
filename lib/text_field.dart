@@ -24,6 +24,7 @@ class CustomTextField extends StatefulWidget {
     this.fontSizeInfo,
     this.validator,
     this.onChanged,
+    this.contentPadding,
     this.isPhone = false,
     this.isNumber = false,
     this.isPassword = false,
@@ -50,6 +51,7 @@ class CustomTextField extends StatefulWidget {
   final bool isPhone;
   final bool isNumber;
   final bool isPassword;
+  final EdgeInsets? contentPadding;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -111,7 +113,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           ),
                         )
                       : null,
-                  contentPadding: const EdgeInsets.symmetric(
+                  contentPadding: widget.contentPadding ?? const EdgeInsets.symmetric(
                     horizontal: 12,
                     vertical: 12,
                   ),
