@@ -28,6 +28,7 @@ class CustomTextField extends StatefulWidget {
     this.isPhone = false,
     this.isNumber = false,
     this.isPassword = false,
+    this.isFocus = false,
   }) : super(key: key);
 
   final Color? colorLabel;
@@ -51,6 +52,7 @@ class CustomTextField extends StatefulWidget {
   final bool isPhone;
   final bool isNumber;
   final bool isPassword;
+  final bool isFocus;
   final EdgeInsets? contentPadding;
 
   @override
@@ -78,6 +80,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 cursorColor: widget.cursorColor ?? Colors.lightBlue,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: widget.validator,
+                autofocus: widget.isFocus,
                 onChanged: widget.onChanged,
                 style: TextStyle(
                     color: widget.colorInput ?? Colors.black,
