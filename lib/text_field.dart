@@ -1,4 +1,5 @@
 library text_field;
+
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -26,19 +27,19 @@ class CustomTextField extends StatefulWidget {
     this.onChanged,
     this.onFieldSubmitted,
     this.contentPadding,
+    this.textController,
+    this.focusNode,
     this.isPhone = false,
     this.isNumber = false,
     this.isPassword = false,
     this.isFocus = false,
-    this.textController,
-    this.focusNode,
   }) : super(key: key);
 
   final Color? colorLabel;
   final Color? colorCountry;
   final Color? colorIconPassword;
   final Color? colorHint;
-  final Color? colorError;  
+  final Color? colorError;
   final Color? colorBorder;
   final Color? colorFocus;
   final Color? colorInput;
@@ -78,19 +79,21 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 color: widget.colorLabel ?? Colors.black,
                 fontSize: widget.fontSizeLabel ?? 10,
                 fontWeight: FontWeight.w600)),
-        const SizedBox(height: 4,),
+        const SizedBox(
+          height: 4,
+        ),
         Row(
           children: [
             Expanded(
               child: TextFormField(
+                controller: widget.textController,
+                focusNode: widget.focusNode,
                 cursorColor: widget.cursorColor ?? Colors.lightBlue,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: widget.validator,
                 autofocus: widget.isFocus,
                 onChanged: widget.onChanged,
                 onFieldSubmitted: widget.onFieldSubmitted,
-                controller: widget.textController,
-                focusNode:widget.focusNode,
                 style: TextStyle(
                     color: widget.colorInput ?? Colors.black,
                     fontSize: widget.fontSizeInput ?? 12,
@@ -121,29 +124,40 @@ class _CustomTextFieldState extends State<CustomTextField> {
                                 ? Icons.visibility_off
                                 : Icons.remove_red_eye_outlined,
                             size: 20,
-                            color: widget.colorIconPassword ?? Colors.grey.shade400,
+                            color: widget.colorIconPassword ??
+                                Colors.grey.shade400,
                           ),
                         )
                       : null,
-                  contentPadding: widget.contentPadding ?? const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 12,
-                  ),
+                  contentPadding: widget.contentPadding ??
+                      const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 12,
+                      ),
                   hintText: widget.hint,
-                  hintStyle: TextStyle(color: widget.colorHint ?? Colors.grey, fontSize: widget.fontSizeInput ?? 12),
-                  errorStyle: TextStyle(color: widget.colorError ?? Colors.red, fontSize: widget.fontSizeInput ?? 12),
+                  hintStyle: TextStyle(
+                      color: widget.colorHint ?? Colors.grey,
+                      fontSize: widget.fontSizeInput ?? 12),
+                  errorStyle: TextStyle(
+                      color: widget.colorError ?? Colors.red,
+                      fontSize: widget.fontSizeInput ?? 12),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: widget.borderRadius ?? BorderRadius.circular(8),
+                    borderRadius:
+                        widget.borderRadius ?? BorderRadius.circular(8),
                     borderSide:
                         BorderSide(color: widget.colorFocus ?? Colors.black45),
                   ),
                   border: OutlineInputBorder(
-                    borderRadius: widget.borderRadius ?? BorderRadius.circular(8),
-                    borderSide: BorderSide(color: widget.colorBorder ?? Colors.black45),
+                    borderRadius:
+                        widget.borderRadius ?? BorderRadius.circular(8),
+                    borderSide:
+                        BorderSide(color: widget.colorBorder ?? Colors.black45),
                   ),
                   errorBorder: OutlineInputBorder(
-                    borderRadius: widget.borderRadius ?? BorderRadius.circular(8),
-                    borderSide: BorderSide(color: widget.colorError ?? Colors.red),
+                    borderRadius:
+                        widget.borderRadius ?? BorderRadius.circular(8),
+                    borderSide:
+                        BorderSide(color: widget.colorError ?? Colors.red),
                   ),
                 ),
               ),
