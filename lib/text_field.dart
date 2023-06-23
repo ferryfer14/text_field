@@ -30,6 +30,8 @@ class CustomTextField extends StatefulWidget {
     this.isNumber = false,
     this.isPassword = false,
     this.isFocus = false,
+    this.textController,
+    this.focusNode,
   }) : super(key: key);
 
   final Color? colorLabel;
@@ -56,6 +58,8 @@ class CustomTextField extends StatefulWidget {
   final bool isPassword;
   final bool isFocus;
   final EdgeInsets? contentPadding;
+  final FocusNode? focusNode;
+  final TextEditingController? textController;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -85,6 +89,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 autofocus: widget.isFocus,
                 onChanged: widget.onChanged,
                 onFieldSubmitted: widget.onFieldSubmitted,
+                controller: widget.textController,
+                focusNode:widget.focusNode,
                 style: TextStyle(
                     color: widget.colorInput ?? Colors.black,
                     fontSize: widget.fontSizeInput ?? 12,
