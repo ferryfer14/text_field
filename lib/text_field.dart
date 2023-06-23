@@ -24,6 +24,7 @@ class CustomTextField extends StatefulWidget {
     this.fontSizeInfo,
     this.validator,
     this.onChanged,
+    this.onFieldSubmitted,
     this.contentPadding,
     this.isPhone = false,
     this.isNumber = false,
@@ -49,6 +50,7 @@ class CustomTextField extends StatefulWidget {
   final BorderRadius? borderRadius;
   final FormFieldValidator<String>? validator;
   final ValueChanged<String>? onChanged;
+  final ValueChanged<String>? onFieldSubmitted;
   final bool isPhone;
   final bool isNumber;
   final bool isPassword;
@@ -82,6 +84,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 validator: widget.validator,
                 autofocus: widget.isFocus,
                 onChanged: widget.onChanged,
+                onFieldSubmitted: widget.onFieldSubmitted,
                 style: TextStyle(
                     color: widget.colorInput ?? Colors.black,
                     fontSize: widget.fontSizeInput ?? 12,
