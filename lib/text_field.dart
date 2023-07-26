@@ -153,6 +153,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     borderSide:
                         BorderSide(color: widget.colorFocus ?? Colors.black45),
                   ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius:
+                        widget.borderRadius ?? BorderRadius.circular(8),
+                    borderSide:
+                        BorderSide(color: widget.colorBorder ?? Colors.black45),
+                  ),
                   border: OutlineInputBorder(
                     borderRadius:
                         widget.borderRadius ?? BorderRadius.circular(8),
