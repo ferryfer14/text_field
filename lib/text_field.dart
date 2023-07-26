@@ -33,6 +33,7 @@ class CustomTextField extends StatefulWidget {
     this.isNumber = false,
     this.isPassword = false,
     this.isFocus = false,
+    this.labelOutline = false
   }) : super(key: key);
 
   final Color? colorLabel;
@@ -61,6 +62,7 @@ class CustomTextField extends StatefulWidget {
   final EdgeInsets? contentPadding;
   final FocusNode? focusNode;
   final TextEditingController? textController;
+  final bool labelOutline;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -74,7 +76,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(widget.label ?? '',
+        widget.labelOutline
+            ? SizedBox()
+            : Text(widget.label ?? '',
             style: TextStyle(
                 color: widget.colorLabel ?? Colors.black,
                 fontSize: widget.fontSizeLabel ?? 10,
@@ -101,6 +105,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 obscureText: widget.isPassword ? isHide : false,
                 keyboardType: widget.isNumber ? TextInputType.phone : null,
                 decoration: InputDecoration(
+                  labelText: widget.labelOutline ? widget.label : null,
+                  floatingLabelBehavior: widget.labelOutline ? FloatingLabelBehavior.always : null,
                   prefixIcon: widget.isPhone
                       ? Container(
                           alignment: Alignment.center,
