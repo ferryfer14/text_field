@@ -20,6 +20,7 @@ class CustomTextField extends StatefulWidget {
     this.hint,
     this.label,
     this.info,
+    this.fontFamily,
     this.fontSizeLabel,
     this.fontSizeInput,
     this.fontSizeInfo,
@@ -50,6 +51,7 @@ class CustomTextField extends StatefulWidget {
   final String? hint;
   final String? label;
   final String? info;
+  final String? fontFamily;
   final double? fontSizeLabel, fontSizeInput, fontSizeInfo;
   final BorderRadius? borderRadius;
   final FormFieldValidator<String>? validator;
@@ -82,6 +84,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             style: TextStyle(
                 color: widget.colorLabel ?? Colors.black,
                 fontSize: widget.fontSizeLabel ?? 10,
+                fontFamily: widget.fontFamily ?? null,
                 fontWeight: FontWeight.w600)),
         const SizedBox(
           height: 4,
@@ -101,6 +104,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 style: TextStyle(
                     color: widget.colorInput ?? Colors.black,
                     fontSize: widget.fontSizeInput ?? 12,
+                    fontFamily: widget.fontFamily ?? null,
                     fontWeight: FontWeight.w500),
                 obscureText: widget.isPassword ? isHide : false,
                 keyboardType: widget.isNumber ? TextInputType.phone : null,
@@ -116,6 +120,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           child: Text(widget.countryCode ?? '+62',
                               style: TextStyle(
                                   color: widget.colorCountry ?? Colors.grey,
+                                  fontFamily: widget.fontFamily ?? null,
                                   fontSize: widget.fontSizeInput ?? 12)),
                         )
                       : null,
@@ -143,9 +148,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   hintText: widget.hint,
                   hintStyle: TextStyle(
                       color: widget.colorHint ?? Colors.grey,
+                      fontFamily: widget.fontFamily ?? null,
                       fontSize: widget.fontSizeInput ?? 12),
                   errorStyle: TextStyle(
                       color: widget.colorError ?? Colors.red,
+                      fontFamily: widget.fontFamily ?? null,
                       fontSize: widget.fontSizeInput ?? 12),
                   focusedBorder: OutlineInputBorder(
                     borderRadius:
@@ -183,6 +190,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             style: TextStyle(
                 color: widget.colorInfo ?? Colors.black,
                 fontSize: widget.fontSizeInfo ?? 10,
+                fontFamily: widget.fontFamily ?? null,
                 fontWeight: FontWeight.w600)),
       ],
     );
