@@ -207,7 +207,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 color: widget.colorInfo ?? Colors.black,
                 fontSize: widget.fontSizeInfo ?? 10,
                 fontFamily: widget.fontFamily ?? null,
-                fontWeight: FontWeight.w600)),
+                fontWeight: widget.labelFontWeight)),
       ],
     );
   }
