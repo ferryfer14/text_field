@@ -3,39 +3,41 @@ library text_field;
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {
-  const CustomTextField({
-    Key? key,
-    this.colorLabel,
-    this.countryCode,
-    this.colorIconPassword,
-    this.colorCountry,
-    this.colorHint,
-    this.colorError,
-    this.colorBorder,
-    this.colorFocus,
-    this.colorInput,
-    this.colorInfo,
-    this.cursorColor,
-    this.borderRadius,
-    this.hint,
-    this.label,
-    this.info,
-    this.fontFamily,
-    this.fontSizeLabel,
-    this.fontSizeInput,
-    this.fontSizeInfo,
-    this.validator,
-    this.onChanged,
-    this.onFieldSubmitted,
-    this.contentPadding,
-    this.textController,
-    this.focusNode,
-    this.isPhone = false,
-    this.isNumber = false,
-    this.isPassword = false,
-    this.isFocus = false,
-    this.labelOutline = false
-  }) : super(key: key);
+  const CustomTextField(
+      {Key? key,
+      this.colorLabel,
+      this.countryCode,
+      this.colorIconPassword,
+      this.colorCountry,
+      this.colorHint,
+      this.colorError,
+      this.colorBorder,
+      this.colorFocus,
+      this.colorInput,
+      this.colorInfo,
+      this.cursorColor,
+      this.borderRadius,
+      this.hint,
+      this.label,
+      this.info,
+      this.fontFamily,
+      this.fontSizeLabel,
+      this.fontSizeInput,
+      this.fontSizeInfo,
+      this.validator,
+      this.onChanged,
+      this.onFieldSubmitted,
+      this.contentPadding,
+      this.textController,
+      this.focusNode,
+      this.labelFontWeight,
+      this.isPhone = false,
+      this.isNumber = false,
+      this.isPassword = false,
+      this.isFocus = false,
+      this.isRequired = false,
+      this.labelOutline = false})
+      : super(key: key);
 
   final Color? colorLabel;
   final Color? colorCountry;
@@ -61,10 +63,12 @@ class CustomTextField extends StatefulWidget {
   final bool isNumber;
   final bool isPassword;
   final bool isFocus;
+  final bool isRequired;
   final EdgeInsets? contentPadding;
   final FocusNode? focusNode;
   final TextEditingController? textController;
   final bool labelOutline;
+  final FontWeight labelFontWeight;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -80,12 +84,24 @@ class _CustomTextFieldState extends State<CustomTextField> {
       children: [
         widget.labelOutline
             ? SizedBox()
-            : Text(widget.label ?? '',
-            style: TextStyle(
-                color: widget.colorLabel ?? Colors.black,
-                fontSize: widget.fontSizeLabel ?? 10,
-                fontFamily: widget.fontFamily ?? null,
-                fontWeight: FontWeight.w600)),
+            : Row(children: [
+                Text(widget.label ?? '',
+                    style: TextStyle(
+                        color: widget.colorLabel ?? Colors.black,
+                        fontSize: widget.fontSizeLabel ?? 10,
+                        fontFamily: widget.fontFamily ?? null,
+                        fontWeight: widget.labelFontWeight ?? FontWeight.w600)),
+                SizedBox(width: 4),
+                widget.isRequired
+                    ? Text("*",
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: widget.fontSizeLabel ?? 10,
+                            fontFamily: widget.fontFamily ?? null,
+                            fontWeight:
+                                widget.labelFontWeight ?? FontWeight.w600))
+                    : const SizedBox()
+              ]),
         const SizedBox(
           height: 4,
         ),
@@ -110,7 +126,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 keyboardType: widget.isNumber ? TextInputType.phone : null,
                 decoration: InputDecoration(
                   labelText: widget.labelOutline ? widget.label : null,
-                  floatingLabelBehavior: widget.labelOutline ? FloatingLabelBehavior.always : null,
+                  floatingLabelBehavior:
+                      widget.labelOutline ? FloatingLabelBehavior.always : null,
                   prefixIcon: widget.isPhone
                       ? Container(
                           alignment: Alignment.center,
