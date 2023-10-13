@@ -30,7 +30,7 @@ class CustomTextField extends StatefulWidget {
       this.contentPadding,
       this.textController,
       this.focusNode,
-      this.labelFontWeight,
+      this.labelFontWeight = FontWeight.w600,
       this.isPhone = false,
       this.isNumber = false,
       this.isPassword = false,
@@ -90,7 +90,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         color: widget.colorLabel ?? Colors.black,
                         fontSize: widget.fontSizeLabel ?? 10,
                         fontFamily: widget.fontFamily ?? null,
-                        fontWeight: widget.labelFontWeight ?? FontWeight.w600)),
+                        fontWeight: widget.labelFontWeight)),
                 SizedBox(width: 4),
                 widget.isRequired
                     ? Text("*",
@@ -98,8 +98,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                             color: Colors.red,
                             fontSize: widget.fontSizeLabel ?? 10,
                             fontFamily: widget.fontFamily ?? null,
-                            fontWeight:
-                                widget.labelFontWeight ?? FontWeight.w600))
+                            fontWeight: widget.labelFontWeight))
                     : const SizedBox()
               ]),
         const SizedBox(
