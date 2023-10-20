@@ -30,6 +30,7 @@ class CustomTextField extends StatefulWidget {
       this.contentPadding,
       this.textController,
       this.focusNode,
+      this.inputFillColor = Colors.white,
       this.labelFontWeight = FontWeight.w600,
       this.isPhone = false,
       this.isNumber = false,
@@ -39,6 +40,7 @@ class CustomTextField extends StatefulWidget {
       this.labelOutline = false})
       : super(key: key);
 
+  final Color inputFillColor;
   final Color? colorLabel;
   final Color? colorCountry;
   final Color? colorIconPassword;
@@ -124,6 +126,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 obscureText: widget.isPassword ? isHide : false,
                 keyboardType: widget.isNumber ? TextInputType.phone : null,
                 decoration: InputDecoration(
+                  fillColor: widget.inputFillColor,
+                  focusColor: widget.inputFillColor,
                   labelText: widget.labelOutline ? widget.label : null,
                   floatingLabelBehavior:
                       widget.labelOutline ? FloatingLabelBehavior.always : null,
