@@ -32,6 +32,7 @@ class CustomTextField extends StatefulWidget {
       this.focusNode,
       this.inputFillColor = Colors.white,
       this.labelFontWeight = FontWeight.w600,
+      this.isFilled = false,
       this.isPhone = false,
       this.isNumber = false,
       this.isPassword = false,
@@ -70,6 +71,7 @@ class CustomTextField extends StatefulWidget {
   final FocusNode? focusNode;
   final TextEditingController? textController;
   final bool labelOutline;
+  final bool isFilled;
   final FontWeight labelFontWeight;
 
   @override
@@ -126,6 +128,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 obscureText: widget.isPassword ? isHide : false,
                 keyboardType: widget.isNumber ? TextInputType.phone : null,
                 decoration: InputDecoration(
+                  filled: widget.isFilled,
                   fillColor: widget.inputFillColor,
                   focusColor: widget.inputFillColor,
                   labelText: widget.labelOutline ? widget.label : null,
