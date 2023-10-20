@@ -32,6 +32,8 @@ class CustomTextField extends StatefulWidget {
       this.focusNode,
       this.inputFillColor = Colors.white,
       this.labelFontWeight = FontWeight.w600,
+      this.inputType = TextInputType.text,
+      this.maxLines = 1,
       this.isFilled = false,
       this.isPhone = false,
       this.isNumber = false,
@@ -62,11 +64,13 @@ class CustomTextField extends StatefulWidget {
   final FormFieldValidator<String>? validator;
   final ValueChanged<String>? onChanged;
   final ValueChanged<String>? onFieldSubmitted;
+  final TextInputType inputType;
   final bool isPhone;
   final bool isNumber;
   final bool isPassword;
   final bool isFocus;
   final bool isRequired;
+  final int maxLines;
   final EdgeInsets? contentPadding;
   final FocusNode? focusNode;
   final TextEditingController? textController;
@@ -119,6 +123,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 validator: widget.validator,
                 autofocus: widget.isFocus,
                 onChanged: widget.onChanged,
+                maxLines: widget.maxLines,
                 onFieldSubmitted: widget.onFieldSubmitted,
                 style: TextStyle(
                     color: widget.colorInput ?? Colors.black,
@@ -126,7 +131,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     fontFamily: widget.fontFamily ?? null,
                     fontWeight: FontWeight.w500),
                 obscureText: widget.isPassword ? isHide : false,
-                keyboardType: widget.isNumber ? TextInputType.phone : null,
+                keyboardType:
+                    widget.isNumber ? TextInputType.phone : widget.inputType,
                 decoration: InputDecoration(
                   filled: widget.isFilled,
                   fillColor: widget.inputFillColor,
