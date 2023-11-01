@@ -30,6 +30,7 @@ class CustomTextField extends StatefulWidget {
       this.contentPadding,
       this.textController,
       this.focusNode,
+      this.suffixIcon,
       this.inputFillColor = Colors.white,
       this.labelFontWeight = FontWeight.w600,
       this.inputType = TextInputType.text,
@@ -76,6 +77,7 @@ class CustomTextField extends StatefulWidget {
   final TextEditingController? textController;
   final bool labelOutline;
   final bool isFilled;
+  final Widget? suffixIcon;
   final FontWeight labelFontWeight;
 
   @override
@@ -168,7 +170,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                                 Colors.grey.shade400,
                           ),
                         )
-                      : null,
+                      : widget.suffixIcon ?? null,
                   contentPadding: widget.contentPadding ??
                       const EdgeInsets.symmetric(
                         horizontal: 12,
