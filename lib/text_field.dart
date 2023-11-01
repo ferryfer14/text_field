@@ -26,6 +26,7 @@ class CustomTextField extends StatefulWidget {
       this.fontSizeInfo,
       this.validator,
       this.onChanged,
+      this.onTap,
       this.onFieldSubmitted,
       this.contentPadding,
       this.textController,
@@ -66,6 +67,7 @@ class CustomTextField extends StatefulWidget {
   final FormFieldValidator<String>? validator;
   final ValueChanged<String>? onChanged;
   final ValueChanged<String>? onFieldSubmitted;
+  final VoidCallback? onTap;
   final TextInputType inputType;
   final bool isPhone;
   final bool isNumber;
@@ -127,6 +129,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 validator: widget.validator,
                 autofocus: widget.isFocus,
                 onChanged: widget.onChanged,
+                onTap: widget.onTap,
                 maxLines: widget.maxLines,
                 readOnly: widget.readOnly,
                 onFieldSubmitted: widget.onFieldSubmitted,
