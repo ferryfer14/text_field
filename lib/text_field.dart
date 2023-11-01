@@ -41,6 +41,7 @@ class CustomTextField extends StatefulWidget {
       this.isPassword = false,
       this.isFocus = false,
       this.isRequired = false,
+      this.readOnly = false,
       this.labelOutline = false})
       : super(key: key);
 
@@ -77,6 +78,7 @@ class CustomTextField extends StatefulWidget {
   final TextEditingController? textController;
   final bool labelOutline;
   final bool isFilled;
+  final bool readOnly;
   final Widget? suffixIcon;
   final FontWeight labelFontWeight;
 
@@ -126,6 +128,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 autofocus: widget.isFocus,
                 onChanged: widget.onChanged,
                 maxLines: widget.maxLines,
+                readOnly: widget.readOnly,
                 onFieldSubmitted: widget.onFieldSubmitted,
                 style: TextStyle(
                     color: widget.colorInput ?? Colors.black,
