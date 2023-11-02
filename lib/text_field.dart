@@ -225,7 +225,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           ],
         ),
         widget.withInfo
-            ? [
+            ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 const SizedBox(
                   height: 4,
                 ),
@@ -235,8 +235,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         fontSize: widget.fontSizeInfo ?? 10,
                         fontFamily: widget.fontFamily ?? null,
                         fontWeight: widget.labelFontWeight)),
-              ]
-            : null
+              ])
+            : const SizedBox()
       ],
     );
   }
