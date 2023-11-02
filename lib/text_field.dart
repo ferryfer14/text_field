@@ -19,6 +19,7 @@ class CustomTextField extends StatefulWidget {
       this.borderRadius,
       this.hint,
       this.label,
+      this.initialValue,
       this.info,
       this.fontFamily,
       this.fontSizeLabel,
@@ -63,6 +64,7 @@ class CustomTextField extends StatefulWidget {
   final String? countryCode;
   final String? hint;
   final String? label;
+  final String? initialValue;
   final String? info;
   final String? fontFamily;
   final double? fontSizeLabel, fontSizeInput, fontSizeInfo;
@@ -136,6 +138,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 autofocus: widget.isFocus,
                 onChanged: widget.onChanged,
                 onTap: widget.onTap,
+                initialValue: widget.initialValue,
                 maxLines: widget.maxLines,
                 readOnly: widget.readOnly,
                 onFieldSubmitted: widget.onFieldSubmitted,
