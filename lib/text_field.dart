@@ -43,6 +43,8 @@ class CustomTextField extends StatefulWidget {
       this.isFocus = false,
       this.isRequired = false,
       this.readOnly = false,
+      this.withInfo = false,
+      this.floatingLabelBehavior = FloatingLabelBehavior.auto,
       this.labelOutline = false})
       : super(key: key);
 
@@ -81,8 +83,10 @@ class CustomTextField extends StatefulWidget {
   final bool labelOutline;
   final bool isFilled;
   final bool readOnly;
+  final bool withInfo;
   final Widget? suffixIcon;
   final FontWeight labelFontWeight;
+  final FloatingLabelBehavior floatingLabelBehavior;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -147,7 +151,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   focusColor: widget.inputFillColor,
                   labelText: widget.labelOutline ? widget.label : null,
                   floatingLabelBehavior:
-                      widget.labelOutline ? FloatingLabelBehavior.always : null,
+                      widget.labelOutline ? widget.floatingLabelBehavior : null,
                   prefixIcon: widget.isPhone
                       ? Container(
                           alignment: Alignment.center,
@@ -220,15 +224,19 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
           ],
         ),
-        const SizedBox(
-          height: 4,
-        ),
-        Text(widget.info ?? '',
-            style: TextStyle(
-                color: widget.colorInfo ?? Colors.black,
-                fontSize: widget.fontSizeInfo ?? 10,
-                fontFamily: widget.fontFamily ?? null,
-                fontWeight: widget.labelFontWeight)),
+        widget.withInfo
+            ? [
+                const SizedBox(
+                  height: 4,
+                ),
+                Text(widget.info ?? '',
+                    style: TextStyle(
+                        color: widget.colorInfo ?? Colors.black,
+                        fontSize: widget.fontSizeInfo ?? 10,
+                        fontFamily: widget.fontFamily ?? null,
+                        fontWeight: widget.labelFontWeight)),
+              ]
+            : null
       ],
     );
   }
