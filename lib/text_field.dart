@@ -154,6 +154,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   filled: widget.isFilled,
                   fillColor: widget.inputFillColor,
                   focusColor: widget.inputFillColor,
+                  labelStyle: widget.labelOutline
+                      ? TextStyle(
+                          color: widget.colorLabel ?? Colors.black,
+                          fontSize: widget.fontSizeLabel ?? 10,
+                          fontFamily: widget.fontFamily ?? null,
+                          fontWeight: widget.labelFontWeight)
+                      : null,
                   labelText: widget.labelOutline ? widget.label : null,
                   floatingLabelBehavior:
                       widget.labelOutline ? widget.floatingLabelBehavior : null,
