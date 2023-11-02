@@ -32,6 +32,7 @@ class CustomTextField extends StatefulWidget {
       this.textController,
       this.focusNode,
       this.suffixIcon,
+      this.prefixIcon,
       this.inputFillColor = Colors.white,
       this.labelFontWeight = FontWeight.w600,
       this.inputType = TextInputType.text,
@@ -85,6 +86,7 @@ class CustomTextField extends StatefulWidget {
   final bool readOnly;
   final bool withInfo;
   final Widget? suffixIcon;
+  final Widget? prefixIcon;
   final FontWeight labelFontWeight;
   final FloatingLabelBehavior floatingLabelBehavior;
 
@@ -164,7 +166,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                                   fontFamily: widget.fontFamily ?? null,
                                   fontSize: widget.fontSizeInput ?? 12)),
                         )
-                      : null,
+                      : widget.prefixIcon ?? null,
                   suffixIcon: widget.isPassword
                       ? GestureDetector(
                           onTap: () {
