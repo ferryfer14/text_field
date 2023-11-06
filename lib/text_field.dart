@@ -46,6 +46,7 @@ class CustomTextField extends StatefulWidget {
       this.isRequired = false,
       this.readOnly = false,
       this.withInfo = false,
+      this.disabledBorder = false,
       this.marginLabel = 4,
       this.textDecorationValue = TextDecoration.none,
       this.floatingLabelBehavior = FloatingLabelBehavior.auto,
@@ -95,6 +96,7 @@ class CustomTextField extends StatefulWidget {
   final FontWeight labelFontWeight;
   final FloatingLabelBehavior floatingLabelBehavior;
   final TextDecoration textDecorationValue;
+  final bool disabledBorder;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -212,30 +214,38 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       color: widget.colorError ?? Colors.red,
                       fontFamily: widget.fontFamily ?? null,
                       fontSize: widget.fontSizeInput ?? 12),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius:
-                        widget.borderRadius ?? BorderRadius.circular(8),
-                    borderSide:
-                        BorderSide(color: widget.colorFocus ?? Colors.black45),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius:
-                        widget.borderRadius ?? BorderRadius.circular(8),
-                    borderSide:
-                        BorderSide(color: widget.colorBorder ?? Colors.black45),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius:
-                        widget.borderRadius ?? BorderRadius.circular(8),
-                    borderSide:
-                        BorderSide(color: widget.colorBorder ?? Colors.black45),
-                  ),
-                  errorBorder: OutlineInputBorder(
-                    borderRadius:
-                        widget.borderRadius ?? BorderRadius.circular(8),
-                    borderSide:
-                        BorderSide(color: widget.colorError ?? Colors.red),
-                  ),
+                  focusedBorder: widget.disabledBorder
+                      ? InputBorder.none
+                      : OutlineInputBorder(
+                          borderRadius:
+                              widget.borderRadius ?? BorderRadius.circular(8),
+                          borderSide: BorderSide(
+                              color: widget.colorFocus ?? Colors.black45),
+                        ),
+                  enabledBorder: widget.disabledBorder
+                      ? InputBorder.none
+                      : OutlineInputBorder(
+                          borderRadius:
+                              widget.borderRadius ?? BorderRadius.circular(8),
+                          borderSide: BorderSide(
+                              color: widget.colorBorder ?? Colors.black45),
+                        ),
+                  border: widget.disabledBorder
+                      ? InputBorder.none
+                      : OutlineInputBorder(
+                          borderRadius:
+                              widget.borderRadius ?? BorderRadius.circular(8),
+                          borderSide: BorderSide(
+                              color: widget.colorBorder ?? Colors.black45),
+                        ),
+                  errorBorder: widget.disabledBorder
+                      ? InputBorder.none
+                      : OutlineInputBorder(
+                          borderRadius:
+                              widget.borderRadius ?? BorderRadius.circular(8),
+                          borderSide: BorderSide(
+                              color: widget.colorError ?? Colors.red),
+                        ),
                 ),
               ),
             ),
