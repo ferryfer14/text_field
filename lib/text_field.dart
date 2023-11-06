@@ -47,6 +47,7 @@ class CustomTextField extends StatefulWidget {
       this.readOnly = false,
       this.withInfo = false,
       this.disabledBorder = false,
+      this.smallPadding = false,
       this.marginLabel = 4,
       this.textDecorationValue = TextDecoration.none,
       this.floatingLabelBehavior = FloatingLabelBehavior.auto,
@@ -97,6 +98,7 @@ class CustomTextField extends StatefulWidget {
   final FloatingLabelBehavior floatingLabelBehavior;
   final TextDecoration textDecorationValue;
   final bool disabledBorder;
+  final bool smallPadding;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -158,6 +160,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 keyboardType:
                     widget.isNumber ? TextInputType.phone : widget.inputType,
                 decoration: InputDecoration(
+                  isDense: widget.smallPadding,
                   filled: widget.isFilled,
                   fillColor: widget.inputFillColor,
                   focusColor: widget.inputFillColor,
