@@ -46,6 +46,7 @@ class CustomTextField extends StatefulWidget {
       this.isRequired = false,
       this.readOnly = false,
       this.withInfo = false,
+      this.textDecorationValue = TextDecoration.none,
       this.floatingLabelBehavior = FloatingLabelBehavior.auto,
       this.labelOutline = false})
       : super(key: key);
@@ -91,6 +92,7 @@ class CustomTextField extends StatefulWidget {
   final Widget? prefixIcon;
   final FontWeight labelFontWeight;
   final FloatingLabelBehavior floatingLabelBehavior;
+  final TextDecoration textDecorationValue;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -146,6 +148,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     color: widget.colorInput ?? Colors.black,
                     fontSize: widget.fontSizeInput ?? 12,
                     fontFamily: widget.fontFamily ?? null,
+                    decoration: widget.textDecorationValue,
                     fontWeight: FontWeight.w500),
                 obscureText: widget.isPassword ? isHide : false,
                 keyboardType:
