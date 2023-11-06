@@ -46,6 +46,7 @@ class CustomTextField extends StatefulWidget {
       this.isRequired = false,
       this.readOnly = false,
       this.withInfo = false,
+      this.marginLabel = 4,
       this.textDecorationValue = TextDecoration.none,
       this.floatingLabelBehavior = FloatingLabelBehavior.auto,
       this.labelOutline = false})
@@ -88,6 +89,7 @@ class CustomTextField extends StatefulWidget {
   final bool isFilled;
   final bool readOnly;
   final bool withInfo;
+  final double marginLabel;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final FontWeight labelFontWeight;
@@ -125,8 +127,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                             fontWeight: widget.labelFontWeight))
                     : const SizedBox()
               ]),
-        const SizedBox(
-          height: 4,
+        SizedBox(
+          height: widget.marginLabel,
         ),
         Row(
           children: [
