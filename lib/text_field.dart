@@ -48,6 +48,7 @@ class CustomTextField extends StatefulWidget {
       this.withInfo = false,
       this.disabledBorder = false,
       this.smallPadding = false,
+      this.unlimitedLines = false,
       this.marginLabel = 4,
       this.textDecorationValue = TextDecoration.none,
       this.floatingLabelBehavior = FloatingLabelBehavior.auto,
@@ -84,6 +85,7 @@ class CustomTextField extends StatefulWidget {
   final bool isFocus;
   final bool isRequired;
   final int maxLines;
+  final bool unlimitedLines;
   final EdgeInsets? contentPadding;
   final FocusNode? focusNode;
   final TextEditingController? textController;
@@ -147,7 +149,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 onChanged: widget.onChanged,
                 onTap: widget.onTap,
                 initialValue: widget.initialValue,
-                maxLines: widget.maxLines,
+                maxLines: widget.unlimitedLines ? null : widget.maxLines,
                 readOnly: widget.readOnly,
                 onFieldSubmitted: widget.onFieldSubmitted,
                 style: TextStyle(
