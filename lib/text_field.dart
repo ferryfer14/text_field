@@ -49,6 +49,7 @@ class CustomTextField extends StatefulWidget {
       this.disabledBorder = false,
       this.smallPadding = false,
       this.unlimitedLines = false,
+      this.showLength = false,
       this.marginLabel = 4,
       this.maxLength = 255,
       this.textDecorationValue = TextDecoration.none,
@@ -85,6 +86,7 @@ class CustomTextField extends StatefulWidget {
   final bool isPassword;
   final bool isFocus;
   final bool isRequired;
+  final bool showLength;
   final int maxLines;
   final bool unlimitedLines;
   final EdgeInsets? contentPadding;
@@ -152,7 +154,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 onTap: widget.onTap,
                 initialValue: widget.initialValue,
                 maxLines: widget.unlimitedLines ? null : widget.maxLines,
-                maxLength: widget.maxLength,
+                maxLength: widget.showLength ? widget.maxLength : null,
                 readOnly: widget.readOnly,
                 onFieldSubmitted: widget.onFieldSubmitted,
                 style: TextStyle(
