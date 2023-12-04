@@ -50,6 +50,7 @@ class CustomTextField extends StatefulWidget {
       this.smallPadding = false,
       this.unlimitedLines = false,
       this.marginLabel = 4,
+      this.maxLength = 255,
       this.textDecorationValue = TextDecoration.none,
       this.floatingLabelBehavior = FloatingLabelBehavior.auto,
       this.labelOutline = false})
@@ -101,6 +102,7 @@ class CustomTextField extends StatefulWidget {
   final TextDecoration textDecorationValue;
   final bool disabledBorder;
   final bool smallPadding;
+  final int maxLength;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -150,6 +152,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 onTap: widget.onTap,
                 initialValue: widget.initialValue,
                 maxLines: widget.unlimitedLines ? null : widget.maxLines,
+                maxLength: widget.maxLength,
                 readOnly: widget.readOnly,
                 onFieldSubmitted: widget.onFieldSubmitted,
                 style: TextStyle(
