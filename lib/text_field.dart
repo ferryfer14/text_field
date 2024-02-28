@@ -30,6 +30,7 @@ class CustomTextField extends StatefulWidget {
       this.onTap,
       this.onFieldSubmitted,
       this.contentPadding,
+      this.onTapOutside,
       this.textController,
       this.focusNode,
       this.suffixIcon,
@@ -79,6 +80,7 @@ class CustomTextField extends StatefulWidget {
   final FormFieldValidator<String>? validator;
   final ValueChanged<String>? onChanged;
   final ValueChanged<String>? onFieldSubmitted;
+  final Function(PointerDownEvent)? onTapOutside;
   final VoidCallback? onTap;
   final TextInputType inputType;
   final bool isPhone;
@@ -151,6 +153,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 validator: widget.validator,
                 autofocus: widget.isFocus,
                 onChanged: widget.onChanged,
+                onTapOutside: widget.onTapOutside,
                 onTap: widget.onTap,
                 initialValue: widget.initialValue,
                 maxLines: widget.unlimitedLines ? null : widget.maxLines,
