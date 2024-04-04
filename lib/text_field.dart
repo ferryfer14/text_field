@@ -124,8 +124,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
   void initState() {
     setState(() {
       if (widget.withoutEmoji) {
-        widget.inputFormatters!
-            .add(FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9]+$')));
+        widget.inputFormatters
+            ?.add(FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9]+$')));
       }
     });
     super.initState();
