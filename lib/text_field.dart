@@ -124,7 +124,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   void initState() {
     setState(() {
-      inputFormatters = List.from(widget.inputFormatters!);
+      if (widget.inputFormatters != null) {
+        inputFormatters = List.from(widget.inputFormatters!);
+      }
       if (widget.withoutEmoji) {
         inputFormatters
             .add(FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9]+$')));
