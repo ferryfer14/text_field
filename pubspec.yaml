@@ -10,7 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  remove_emoji_input_formatter: ^0.0.1+1
 
 dev_dependencies:
   flutter_test:

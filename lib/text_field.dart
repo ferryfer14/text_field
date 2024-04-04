@@ -2,7 +2,6 @@ library text_field;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:remove_emoji_input_formatter/remove_emoji_input_formatter.dart';
 
 class CustomTextField extends StatefulWidget {
   const CustomTextField(
@@ -124,7 +123,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   void initState() {
     if (widget.withoutEmoji) {
-      widget.inputFormatters?.add(RemoveEmojiInputFormatter());
+      widget.inputFormatters
+          ?.add(FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9]+$')));
     }
     super.initState();
   }
