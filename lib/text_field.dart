@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class CustomTextField extends StatefulWidget {
-  CustomTextField(
+  const CustomTextField(
       {Key? key,
       this.colorLabel,
       this.countryCode,
@@ -36,7 +36,7 @@ class CustomTextField extends StatefulWidget {
       this.focusNode,
       this.suffixIcon,
       this.prefixIcon,
-      this.inputFormatters = const [],
+      this.inputFormatters,
       this.inputFillColor = Colors.white,
       this.labelFontWeight = FontWeight.w600,
       this.inputType = TextInputType.text,
@@ -111,7 +111,7 @@ class CustomTextField extends StatefulWidget {
   final bool disabledBorder;
   final bool smallPadding;
   final int maxLength;
-  final List<TextInputFormatter> inputFormatters;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -119,12 +119,14 @@ class CustomTextField extends StatefulWidget {
 
 class _CustomTextFieldState extends State<CustomTextField> {
   bool isHide = true;
+  List<TextInputFormatter> inputFormatters = [];
 
   @override
   void initState() {
     setState(() {
+      inputFormatters = List.from(widget.inputFormatters!);
       if (widget.withoutEmoji) {
-        widget.inputFormatters
+        inputFormatters
             .add(FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9]+$')));
       }
     });
@@ -276,7 +278,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                               color: widget.colorError ?? Colors.red),
                         ),
                 ),
-                inputFormatters: widget.inputFormatters,
+                inputFormatters: inputFormatters,
               ),
             ),
           ],
