@@ -1,6 +1,8 @@
 library text_field;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:remove_emoji_input_formatter/remove_emoji_input_formatter.dart';
 
 class CustomTextField extends StatefulWidget {
   const CustomTextField(
@@ -35,6 +37,7 @@ class CustomTextField extends StatefulWidget {
       this.focusNode,
       this.suffixIcon,
       this.prefixIcon,
+      this.inputFormatters,
       this.inputFillColor = Colors.white,
       this.labelFontWeight = FontWeight.w600,
       this.inputType = TextInputType.text,
@@ -51,6 +54,7 @@ class CustomTextField extends StatefulWidget {
       this.smallPadding = false,
       this.unlimitedLines = false,
       this.showLength = false,
+      this.withoutEmoji = true,
       this.marginLabel = 4,
       this.maxLength = 255,
       this.textDecorationValue = TextDecoration.none,
@@ -98,6 +102,7 @@ class CustomTextField extends StatefulWidget {
   final bool isFilled;
   final bool readOnly;
   final bool withInfo;
+  final bool withoutEmoji;
   final double marginLabel;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
@@ -107,6 +112,7 @@ class CustomTextField extends StatefulWidget {
   final bool disabledBorder;
   final bool smallPadding;
   final int maxLength;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -116,26 +122,34 @@ class _CustomTextFieldState extends State<CustomTextField> {
   bool isHide = true;
 
   @override
+  void initState() {
+    if (widget.withoutEmoji) {
+      widget.inputFormatters?.add(RemoveEmojiInputFormatter());
+    }
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         widget.labelOutline
-            ? SizedBox()
+            ? const SizedBox()
             : Row(children: [
                 Text(widget.label ?? '',
                     style: TextStyle(
                         color: widget.colorLabel ?? Colors.black,
                         fontSize: widget.fontSizeLabel ?? 10,
-                        fontFamily: widget.fontFamily ?? null,
+                        fontFamily: widget.fontFamily,
                         fontWeight: widget.labelFontWeight)),
-                SizedBox(width: 4),
+                const SizedBox(width: 4),
                 widget.isRequired
                     ? Text("*",
                         style: TextStyle(
                             color: Colors.red,
                             fontSize: widget.fontSizeLabel ?? 10,
-                            fontFamily: widget.fontFamily ?? null,
+                            fontFamily: widget.fontFamily,
                             fontWeight: widget.labelFontWeight))
                     : const SizedBox()
               ]),
@@ -163,7 +177,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 style: TextStyle(
                     color: widget.colorInput ?? Colors.black,
                     fontSize: widget.fontSizeInput ?? 12,
-                    fontFamily: widget.fontFamily ?? null,
+                    fontFamily: widget.fontFamily,
                     decoration: widget.textDecorationValue,
                     fontWeight: FontWeight.w500),
                 obscureText: widget.isPassword ? isHide : false,
@@ -178,7 +192,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       ? TextStyle(
                           color: widget.colorLabel ?? Colors.black,
                           fontSize: widget.fontSizeLabel ?? 10,
-                          fontFamily: widget.fontFamily ?? null,
+                          fontFamily: widget.fontFamily,
                           fontWeight: widget.labelFontWeight)
                       : null,
                   labelText: widget.labelOutline ? widget.label : null,
@@ -193,10 +207,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           child: Text(widget.countryCode ?? '+62',
                               style: TextStyle(
                                   color: widget.colorCountry ?? Colors.grey,
-                                  fontFamily: widget.fontFamily ?? null,
+                                  fontFamily: widget.fontFamily,
                                   fontSize: widget.fontSizeInput ?? 12)),
                         )
-                      : widget.prefixIcon ?? null,
+                      : widget.prefixIcon,
                   suffixIcon: widget.isPassword
                       ? GestureDetector(
                           onTap: () {
@@ -212,7 +226,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                                 Colors.grey.shade400,
                           ),
                         )
-                      : widget.suffixIcon ?? null,
+                      : widget.suffixIcon,
                   contentPadding: widget.contentPadding ??
                       const EdgeInsets.symmetric(
                         horizontal: 12,
@@ -221,11 +235,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   hintText: widget.hint,
                   hintStyle: TextStyle(
                       color: widget.colorHint ?? Colors.grey,
-                      fontFamily: widget.fontFamily ?? null,
+                      fontFamily: widget.fontFamily,
                       fontSize: widget.fontSizeInput ?? 12),
                   errorStyle: TextStyle(
                       color: widget.colorError ?? Colors.red,
-                      fontFamily: widget.fontFamily ?? null,
+                      fontFamily: widget.fontFamily,
                       fontSize: widget.fontSizeInput ?? 12),
                   focusedBorder: widget.disabledBorder
                       ? InputBorder.none
@@ -260,6 +274,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                               color: widget.colorError ?? Colors.red),
                         ),
                 ),
+                inputFormatters: widget.inputFormatters,
               ),
             ),
           ],
@@ -273,7 +288,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     style: TextStyle(
                         color: widget.colorInfo ?? Colors.black,
                         fontSize: widget.fontSizeInfo ?? 10,
-                        fontFamily: widget.fontFamily ?? null,
+                        fontFamily: widget.fontFamily,
                         fontWeight: widget.labelFontWeight)),
               ])
             : const SizedBox()
