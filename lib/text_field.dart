@@ -56,6 +56,7 @@ class CustomTextField extends StatefulWidget {
       this.withoutEmoji = true,
       this.marginLabel = 4,
       this.maxLength = 255,
+      this.sizeIcon = 20,
       this.textDecorationValue = TextDecoration.none,
       this.floatingLabelBehavior = FloatingLabelBehavior.auto,
       this.labelOutline = false})
@@ -102,6 +103,7 @@ class CustomTextField extends StatefulWidget {
   final bool readOnly;
   final bool withInfo;
   final bool withoutEmoji;
+  final double sizeIcon;
   final double marginLabel;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
@@ -227,7 +229,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                             isHide
                                 ? Icons.visibility_off
                                 : Icons.remove_red_eye_outlined,
-                            size: 20,
+                            size: widget.sizeIcon,
                             color: widget.colorIconPassword ??
                                 Colors.grey.shade400,
                           ),
