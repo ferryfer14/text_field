@@ -227,6 +227,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                             isHide = !isHide;
                             setState(() {});
                           },
+                          child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
                           child: Icon(
                             isHide
                                 ? Icons.visibility_off
@@ -234,7 +236,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                             size: widget.sizeIcon,
                             color: widget.colorIconPassword ??
                                 Colors.grey.shade400,
-                          ),
+                          )),
                         )
                       : widget.suffixIcon,
             suffixIconConstraints: widget.suffixIconConstraints,
