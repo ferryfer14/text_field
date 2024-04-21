@@ -36,6 +36,7 @@ class CustomTextField extends StatefulWidget {
       this.focusNode,
       this.suffixIcon,
       this.prefixIcon,
+      this.suffixIconConstraints,
       this.inputFormatters,
       this.inputFillColor = Colors.white,
       this.labelFontWeight = FontWeight.w600,
@@ -113,6 +114,7 @@ class CustomTextField extends StatefulWidget {
   final bool disabledBorder;
   final bool smallPadding;
   final int maxLength;
+  final BoxConstraints? suffixIconConstraints;
   final List<TextInputFormatter>? inputFormatters;
 
   @override
@@ -235,6 +237,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           ),
                         )
                       : widget.suffixIcon,
+            suffixIconConstraints: widget.suffixIconConstraints,
                   contentPadding: widget.contentPadding ??
                       const EdgeInsets.symmetric(
                         horizontal: 12,
