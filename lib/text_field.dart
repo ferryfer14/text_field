@@ -36,6 +36,7 @@ class CustomTextField extends StatefulWidget {
       this.focusNode,
       this.suffixIcon,
       this.prefixIcon,
+      this.prefixIconConstraints,
       this.suffixIconConstraints,
       this.inputFormatters,
       this.inputFillColor = Colors.white,
@@ -114,6 +115,7 @@ class CustomTextField extends StatefulWidget {
   final bool disabledBorder;
   final bool smallPadding;
   final int maxLength;
+  final BoxConstraints? prefixIconConstraints;
   final BoxConstraints? suffixIconConstraints;
   final List<TextInputFormatter>? inputFormatters;
 
@@ -221,6 +223,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                                   fontSize: widget.fontSizeInput ?? 12)),
                         )
                       : widget.prefixIcon,
+                  prefixIconConstraints: widget.prefixIconConstraints,
                   suffixIcon: widget.isPassword
                       ? GestureDetector(
                           onTap: () {
