@@ -39,6 +39,7 @@ class CustomTextField extends StatefulWidget {
       this.prefixIconConstraints,
       this.suffixIconConstraints,
       this.inputFormatters,
+      this.textAlignVertical,
       this.inputFillColor = Colors.white,
       this.labelFontWeight = FontWeight.w600,
       this.inputType = TextInputType.text,
@@ -118,6 +119,7 @@ class CustomTextField extends StatefulWidget {
   final BoxConstraints? prefixIconConstraints;
   final BoxConstraints? suffixIconConstraints;
   final List<TextInputFormatter>? inputFormatters;
+  final TextAlignVertical? textAlignVertical;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -134,8 +136,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
         inputFormatters = List.from(widget.inputFormatters!);
       }
       if (widget.withoutEmoji) {
-        inputFormatters
-            .add(FilteringTextInputFormatter.allow(RegExp(r'^[ A-Za-z0-9_@./#&+-]*')));
+        inputFormatters.add(FilteringTextInputFormatter.allow(
+            RegExp(r'^[ A-Za-z0-9_@./#&+-]*')));
       }
     });
     super.initState();
@@ -172,6 +174,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           children: [
             Expanded(
               child: TextFormField(
+                textAlignVertical: widget.textAlignVertical,
                 controller: widget.textController,
                 focusNode: widget.focusNode,
                 cursorColor: widget.cursorColor ?? Colors.lightBlue,
@@ -231,18 +234,19 @@ class _CustomTextFieldState extends State<CustomTextField> {
                             setState(() {});
                           },
                           child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
-                          child: Icon(
-                            isHide
-                                ? Icons.visibility_off
-                                : Icons.remove_red_eye_outlined,
-                            size: widget.sizeIcon,
-                            color: widget.colorIconPassword ??
-                                Colors.grey.shade400,
-                          )),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 12),
+                              child: Icon(
+                                isHide
+                                    ? Icons.visibility_off
+                                    : Icons.remove_red_eye_outlined,
+                                size: widget.sizeIcon,
+                                color: widget.colorIconPassword ??
+                                    Colors.grey.shade400,
+                              )),
                         )
                       : widget.suffixIcon,
-            suffixIconConstraints: widget.suffixIconConstraints,
+                  suffixIconConstraints: widget.suffixIconConstraints,
                   contentPadding: widget.contentPadding ??
                       const EdgeInsets.symmetric(
                         horizontal: 12,
