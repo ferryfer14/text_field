@@ -60,6 +60,7 @@ class CustomTextField extends StatefulWidget {
       this.marginLabel = 4,
       this.maxLength = 255,
       this.sizeIcon = 20,
+      this.expands = false,
       this.textDecorationValue = TextDecoration.none,
       this.floatingLabelBehavior = FloatingLabelBehavior.auto,
       this.labelOutline = false})
@@ -106,6 +107,7 @@ class CustomTextField extends StatefulWidget {
   final bool readOnly;
   final bool withInfo;
   final bool withoutEmoji;
+  final bool expands;
   final double sizeIcon;
   final double marginLabel;
   final Widget? suffixIcon;
@@ -182,6 +184,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 validator: widget.validator,
                 autofocus: widget.isFocus,
                 onChanged: widget.onChanged,
+                expands: widget.expands,
                 onTapOutside: widget.onTapOutside,
                 onTap: widget.onTap,
                 initialValue: widget.initialValue,
